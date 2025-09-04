@@ -33,9 +33,9 @@ public class JWTUtils {
     public String create(String id, String correo, String rol){
         //Decodifica el secreto Base64 y crea una clave HMAC-SHA segura
         SecretKey signingKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecreto));
-
+        //calcula la fecha de expiracion del token
         //Obtiene la fecha catual y calcula la fecha de expiración
-        Date now = new Date();
+        Date now = new Date();//fecha actual y hora
         Date expiration = new Date(now.getTime() + expiracionMs);
 
         //Construye el token con sus componentes
