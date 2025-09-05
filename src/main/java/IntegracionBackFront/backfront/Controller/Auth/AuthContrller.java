@@ -4,7 +4,11 @@ import IntegracionBackFront.backfront.Entities.Users.UserEntity;
 import IntegracionBackFront.backfront.Models.DTO.Users.UserDTO;
 import IntegracionBackFront.backfront.Services.AuthService.AuthService;
 import IntegracionBackFront.backfront.Utils.JWTUtils;
+
+
+
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/auth")
 public class AuthContrller {
 
     @Autowired

@@ -3,7 +3,7 @@ package IntegracionBackFront.backfront.Services.Users;
 import IntegracionBackFront.backfront.Config.Argon2.Argon2Password;
 import IntegracionBackFront.backfront.Entities.UserType.UserTypeEntity;
 import IntegracionBackFront.backfront.Entities.Users.UserEntity;
-import IntegracionBackFront.backfront.Exceptions.UserType.TipoUsuarioNotFound;
+import IntegracionBackFront.backfront.Exceptions.Users.ExceptionTipoUsuarioNotFounfd;
 import IntegracionBackFront.backfront.Exceptions.Users.UserNotFoundException;
 import IntegracionBackFront.backfront.Exceptions.Users.UsuarioCorreoDuplicadoException;
 import IntegracionBackFront.backfront.Models.DTO.Users.UserDTO;
@@ -77,7 +77,7 @@ public class UserServices {
         existencia.setCorreo(json.getCorreo());
         if (json.getIdTipoUsuario() != null){
             UserTypeEntity tipoUsuario = repoUserType.findById(json.getIdTipoUsuario())
-                    .orElseThrow(()-> new TipoUsuarioNotFound("Tipo de usuario no encontrado"));
+                    .orElseThrow(()-> new ExceptionTipoUsuarioNotFounfd("Tipo de usuario no encontrado"));
             existencia.setTipoUsuario(tipoUsuario);
         }else {
             existencia.setTipoUsuario(null);
@@ -166,7 +166,7 @@ public class UserServices {
         entity.setFechaRegistro(json.getFechaRegistro());
         if (json.getIdTipoUsuario() != null){
             UserTypeEntity entityType = repoUserType.findById(json.getIdTipoUsuario())
-                    .orElseThrow(()-> new TipoUsuarioNotFound("ID de Tipo de usuario no encontrado"));
+                    .orElseThrow(()-> new ExceptionTipoUsuarioNotFounfd("ID de Tipo de usuario no encontrado"));
             entity.setTipoUsuario(entityType);
         }
         return entity;
